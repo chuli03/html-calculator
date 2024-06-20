@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playwrite+PL:wght@100..400&display=swap" rel="stylesheet">
+<link rel="shortcut icon" href="images/hello-kitty-icon.png" />
+</head>
+<body>
+    <div class="title">
+        Hello Kitty Calculator
+        <img src="images/hello-kitty.gif" alt="">
+    </div>
+    <div id="app">
+        <form name="calculator">
+            <input type="textfield" name="ans" autocomplete="off" readonly placeholder="0" class="btn-calc-1">
+            <br>
+            <input type="button" value="7" onclick="playSound();document.calculator.ans.value+='7'" class="btn-calc">
+            <input type="button" value="8" onclick="playSound();document.calculator.ans.value+='8'" class="btn-calc">
+            <input type="button" value="9" onclick="playSound();document.calculator.ans.value+='9'" class="btn-calc">
+            <input type="button" value="+" onclick="playSound();document.calculator.ans.value+='+'" class="btn-calc op">
+            <br>
+            <input type="button" value="4" onclick="playSound();document.calculator.ans.value+='4'" class="btn-calc">
+            <input type="button" value="5" onclick="playSound();document.calculator.ans.value+='5'" class="btn-calc">
+            <input type="button" value="6" onclick="playSound();document.calculator.ans.value+='6'" class="btn-calc">
+            <input type="button" value="-" onclick="playSound();document.calculator.ans.value+='-'" class="btn-calc op">
+            <br>
+            <input type="button" value="1" onclick="playSound();document.calculator.ans.value+='1'" class="btn-calc">
+            <input type="button" value="2" onclick="playSound();document.calculator.ans.value+='2'" class="btn-calc">
+            <input type="button" value="3" onclick="playSound();document.calculator.ans.value+='3'" class="btn-calc">
+            <input type="reset" value="C" class="btn-calc op" onclick="playSound3()">
+            <br>
+            <input type="button" value="X" onclick="playSound();document.calculator.ans.value+='*'" class="btn-calc op">
+            <input type="button" value="/" onclick="playSound();document.calculator.ans.value+='/'" class="btn-calc op">
+            <input type="button" value="=" onclick="playSound2();evaluateExpression()" class="btn-calc-equal">
+
+
+        </form>
+
+    </div>
+
+    <div class="footer">
+        ❤ 
+
+    </div>
+
+    <audio id="click-sound" src="images/sound.mp3" preload="auto"></audio>
+    <audio id="click-sound2" src="images/equal.mp3" preload="auto"></audio>
+    <audio id="click-sound3" src="images/resetear.mp3" preload="auto"></audio>
+
+    <script>
+        function playSound() {
+            var sound = document.getElementById("click-sound");
+            sound.play();
+        }
+
+        function playSound2() {
+            var sound = document.getElementById("click-sound2");
+            sound.play();
+        }
+        function playSound3() {
+            var sound = document.getElementById("click-sound3");
+            sound.play();
+        }
+
+
+
+
+        function evaluateExpression() {
+            var inputField = document.calculator.ans;
+            try {
+                if (inputField.value) {
+                    inputField.value = eval(inputField.value);
+                }
+            } catch (e) {
+                inputField.value = "Error";
+            }
+        }
+    </script>
+    
+</body>
+</html>
